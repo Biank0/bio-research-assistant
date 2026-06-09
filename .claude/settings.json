@@ -1,0 +1,14 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "f=\"$CLAUDE_PROJECT_DIR/产出和思考/实验/experiment_state.yaml\"; [ -f \"$f\" ] && awk -F': *' '/^active_experiment:/{e=$2} /^experiment_name:/{n=$2} /^stage:/{s=$2} /^last_log:/{d=$2} END{if(e!=\"\" && e!=\"null\") printf \"[当前实验] %s %s · 进行到: %s (last_log %s)\\n\", e, n, s, d}' \"$f\"; true"
+          }
+        ]
+      }
+    ]
+  }
+}
